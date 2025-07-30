@@ -1,5 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [gd_scene load_steps=20 format=3 uid="uid://b0yuek1fcokaw"]
+=======
+[gd_scene load_steps=78 format=3 uid="uid://b0yuek1fcokaw"]
+>>>>>>> Stashed changes
 =======
 [gd_scene load_steps=78 format=3 uid="uid://b0yuek1fcokaw"]
 >>>>>>> Stashed changes
@@ -309,7 +313,11 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqr4"]
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4nje"]
+>>>>>>> Stashed changes
 =======
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4nje"]
 >>>>>>> Stashed changes
@@ -319,7 +327,11 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuylp"]
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc6xx"]
+>>>>>>> Stashed changes
 =======
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc6xx"]
 >>>>>>> Stashed changes
@@ -329,7 +341,11 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j15mi"]
+=======
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxfbu"]
+>>>>>>> Stashed changes
 =======
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxfbu"]
 >>>>>>> Stashed changes
@@ -339,8 +355,11 @@ uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21qrs"]
 =======
+=======
+>>>>>>> Stashed changes
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyydr"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_56dnr")
@@ -471,6 +490,9 @@ sdfgi_enabled = true
 auto_exposure_scale = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibchy"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_56dnr")
@@ -484,6 +506,9 @@ uv1_triplanar = true
 =======
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="ProtoCSGBox3D12" parent="Tunnel Cutout" instance=ExtResource("1_ouhj4")]
@@ -497,6 +522,9 @@ transform = Transform3D(-4.37114e-08, -1, 0, 0.99689, -4.35754e-08, 0.0788071, -
 =======
 [node name="ProtoCSGCylinder3D" parent="CSGCombiner3D" instance=ExtResource("3_qqvy4")]
 transform = Transform3D(-4.37114e-08, -1, 5.66953e-15, 0.99689, -4.35754e-08, 0.0788071, -0.0788071, 3.44477e-09, 0.99689, -12.5548, 1.45005, 4.22508)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 operation = 2
 radius = 1.07486
@@ -509,6 +537,9 @@ material = SubResource("StandardMaterial3D_0si44")
 =======
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
 use_collision = true
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="ProtoCSGBox3D5" parent="Skylight Cutout" instance=ExtResource("1_ouhj4")]
@@ -529,6 +560,7 @@ material = SubResource("StandardMaterial3D_ptxo6")
 
 [node name="Main Building" type="Node3D" parent="."]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 transform = Transform3D(1.19609e-08, -0.628499, -1.31883, 0, 0.781695, -1.06037, 1.00302, 7.49477e-09, 1.57269e-08, -15.8746, 0.984599, -12.1219)
 
 [node name="ProtoCSGBox3D" parent="Main Building" instance=ExtResource("1_ouhj4")]
@@ -536,6 +568,9 @@ transform = Transform3D(4.80733e-08, -1.04338e-15, 2.66359, -2.52606, 0.776988, 
 size = Vector3(18.8797, 0.447266, 14.5469)
 material = SubResource("StandardMaterial3D_umsh7")
 block_style = 7
+=======
+transform = Transform3D(-4.38434e-08, -0.628499, -1.31883, 0, 0.781695, -1.06037, 1.00302, -2.74726e-08, -5.7648e-08, -15.8746, 0.984599, -12.1219)
+>>>>>>> Stashed changes
 =======
 transform = Transform3D(-4.38434e-08, -0.628499, -1.31883, 0, 0.781695, -1.06037, 1.00302, -2.74726e-08, -5.7648e-08, -15.8746, 0.984599, -12.1219)
 >>>>>>> Stashed changes
@@ -711,12 +746,16 @@ material = SubResource("StandardMaterial3D_13y2m")
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -12.3076, 9.93666, -3.50846)
 size = Vector3(0.0499868, 5.40042, 0.143494)
 material = SubResource("StandardMaterial3D_fmtds")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="ProtoCSGBox3D38" parent="Watch tower 1" instance=ExtResource("1_ouhj4")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.981, 9.93666, -5.91549)
 size = Vector3(0.0499868, 4.84022, 0.143494)
 material = SubResource("StandardMaterial3D_04vax")
+<<<<<<< Updated upstream
 
 [node name="ProtoCSGBox3D39" parent="Watch tower 1" instance=ExtResource("1_ouhj4")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -9.61361, 9.9342, -4.02411)
@@ -777,6 +816,8 @@ material = SubResource("StandardMaterial3D_13y2m")
 transform = Transform3D(1, 0, 0, 0, 0.553028, -0.833163, 0, 0.833163, 0.553028, -10.5461, 8.85936, -6.11834)
 size = Vector3(0.0499868, 3.79415, 0.180145)
 material = SubResource("StandardMaterial3D_13y2m")
+=======
+>>>>>>> Stashed changes
 
 [node name="ProtoCSGBox3D37" parent="Watch tower 1" instance=ExtResource("1_ouhj4")]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -12.3444, 9.93666, -8.34461)
@@ -868,6 +909,7 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 size = Vector3(2.021, 0.924866, 0.0361328)
 material = SubResource("StandardMaterial3D_oon0c")
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 [node name="CharacterBody3D" parent="Watch tower 1" instance=ExtResource("6_fdg4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4559, 4.48062, -5.89319)
@@ -970,6 +1012,8 @@ operation = 2
 size = Vector3(1, 1.64771, 1)
 material = SubResource("StandardMaterial3D_21qrs")
 =======
+=======
+>>>>>>> Stashed changes
 [node name="Sky3D" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5mk7f")
 camera_attributes = SubResource("CameraAttributesPractical_g8ca3")
@@ -1013,4 +1057,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9945, 3.76785, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.49103, 1, -9.28425)
 size = Vector3(52.4354, 1, 45.6183)
 material = SubResource("StandardMaterial3D_ibchy")
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
