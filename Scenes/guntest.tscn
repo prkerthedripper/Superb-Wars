@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c02kwgwm6h6yn"]
+
+[ext_resource type="Script" path="res://Scenes/guntest.gd" id="1_g8qxh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kx6vd"]
+size = Vector3(1, 0.510254, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mcbxw"]
+size = Vector3(0.3, 0.3, 1)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_g8qxh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0407715, 0)
+shape = SubResource("BoxShape3D_kx6vd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mcbxw")
+
+[node name="MuzzlePoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.802096)

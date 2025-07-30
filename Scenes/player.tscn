@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpx6j5o15d5pg" path="res://Models/Player/backpack_2.png" id="4_ux1y0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sjxwy"]
+height = 1.76967
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1sn8y"]
 radius = 0.776523
@@ -173,6 +174,7 @@ shape = SubResource("CapsuleShape3D_sjxwy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538035, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.506769)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.243055, -0.76347)
@@ -201,7 +203,7 @@ shape = SubResource("SphereShape3D_1sn8y")
 mesh = SubResource("CapsuleMesh_qubg1")
 
 [node name="Backpackfixed_obj_cleaner_materialmerger_gles" type="Node3D" parent="PlayerMesh"]
-transform = Transform3D(-0.03, -2.62268e-09, -1.14641e-16, 0, -1.31134e-09, 0.03, -2.62268e-09, 0.03, 1.31134e-09, -0.0625276, 0.230546, 0.0289766)
+transform = Transform3D(-0.03, -4.52987e-09, -1.98007e-16, 0, -1.31134e-09, 0.03, -4.52987e-09, 0.03, 1.31134e-09, -0.0625276, 0.230546, 0.0289766)
 
 [node name="Object_2" type="MeshInstance3D" parent="PlayerMesh/Backpackfixed_obj_cleaner_materialmerger_gles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7522e-14, -123.948)
@@ -224,3 +226,5 @@ mesh = SubResource("ArrayMesh_q8ot6")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerMesh"]
+
+[node name="UI" type="CanvasLayer" parent="."]

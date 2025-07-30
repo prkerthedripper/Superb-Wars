@@ -26,6 +26,8 @@ var prone_height = 0.4
 @onready var ground_check = $GroundCheck
 @onready var hand_position = $HandPosition
 @onready var weapon_detector = $WeaponDetector
+@onready var ui = $UI
+@onready var ammo_label = $UI/AmmoLabel
 
 var current_weapon = null
 var is_first_person = true
@@ -36,6 +38,7 @@ func _ready():
 	setup_rays()
 	setup_weapon_detector()
 	setup_cameras()
+	setup_ui()
 
 func setup_collision_shape():
 	var shape = CapsuleShape3D.new()
@@ -58,6 +61,16 @@ func setup_cameras():
 	fps_camera.current = true
 	tps_camera.current = false
 
+func setup_ui():
+	if not ammo_label:
+		ammo_label = Label.new()
+		ammo_label.name = "AmmoLabel"
+		ui.add_child(ammo_label)
+		ammo_label.position = Vector2(50, 50)
+		ammo_label.add_theme_font_size_override("font_size", 24)
+		ammo_label.add_theme_color_override("font_color", Color.WHITE)
+	update_ammo_display()
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		handle_mouse_look(event)
@@ -70,6 +83,15 @@ func _unhandled_input(event):
 	
 	if Input.is_action_just_pressed("switch_camera"):
 		switch_camera()
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot_weapon()
+	
+	if Input.is_action_just_pressed("reload"):
+		reload_weapon()
+	
+	if Input.is_action_just_pressed("drop_weapon"):
+		drop_current_weapon()
 
 func handle_mouse_look(event):
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
@@ -93,6 +115,28 @@ func switch_camera():
 	else:
 		tps_camera.current = true
 		fps_camera.current = false
+
+func shoot_weapon():
+	if not current_weapon:
+		return
+	
+	var camera = fps_camera if is_first_person else tps_camera
+	var shoot_direction = -camera.global_transform.basis.z
+	
+	if current_weapon.shoot(shoot_direction):
+		update_ammo_display()
+
+func reload_weapon():
+	if current_weapon:
+		current_weapon.reload()
+		update_ammo_display()
+
+func update_ammo_display():
+	if current_weapon:
+		ammo_label.text = "Ammo: " + current_weapon.get_ammo_text()
+		ammo_label.visible = true
+	else:
+		ammo_label.visible = false
 
 func _physics_process(delta):
 	handle_stance_input()
@@ -186,8 +230,13 @@ func pickup_weapon(weapon):
 	
 	current_weapon = weapon
 	weapon.pickup(hand_position)
+	update_ammo_display()
 
 func drop_current_weapon():
 	if current_weapon:
-		current_weapon.drop(global_position + transform.basis.z * -1)
+		var drop_distance = 2.0
+		var forward_direction = -transform.basis.z
+		var drop_position = global_position + forward_direction * drop_distance
+		current_weapon.drop(drop_position, forward_direction)
 		current_weapon = null
+		update_ammo_display()
