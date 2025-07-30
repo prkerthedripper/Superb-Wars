@@ -20,19 +20,22 @@ var crouching_height = 0.9
 var prone_height = 0.4
 
 @onready var camera_pivot = $CameraPivot
-@onready var camera = $CameraPivot/Camera3D
+@onready var fps_camera = $CameraPivot/Camera3D
+@onready var tps_camera = $TPSCamera
 @onready var collision_shape = $CollisionShape3D
 @onready var ground_check = $GroundCheck
 @onready var hand_position = $HandPosition
 @onready var weapon_detector = $WeaponDetector
 
 var current_weapon = null
+var is_first_person = true
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	setup_collision_shape()
 	setup_rays()
 	setup_weapon_detector()
+	setup_cameras()
 
 func setup_collision_shape():
 	var shape = CapsuleShape3D.new()
@@ -51,6 +54,10 @@ func setup_weapon_detector():
 	weapon_detector.get_child(0).shape = detector_shape
 	weapon_detector.body_entered.connect(_on_weapon_entered)
 
+func setup_cameras():
+	fps_camera.current = true
+	tps_camera.current = false
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		handle_mouse_look(event)
@@ -60,14 +67,32 @@ func _unhandled_input(event):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if Input.is_action_just_pressed("switch_camera"):
+		switch_camera()
 
 func handle_mouse_look(event):
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		return
 	
-	rotate_y(-event.relative.x * mouse_sensitivity)
-	camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
-	camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -PI/2, PI/2)
+	if is_first_person:
+		rotate_y(-event.relative.x * mouse_sensitivity)
+		camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, -PI/2, PI/2)
+	else:
+		rotate_y(-event.relative.x * mouse_sensitivity)
+		tps_camera.rotate_x(-event.relative.y * mouse_sensitivity)
+		tps_camera.rotation.x = clamp(tps_camera.rotation.x, -PI/3, PI/6)
+
+func switch_camera():
+	is_first_person = !is_first_person
+	
+	if is_first_person:
+		fps_camera.current = true
+		tps_camera.current = false
+	else:
+		tps_camera.current = true
+		fps_camera.current = false
 
 func _physics_process(delta):
 	handle_stance_input()
@@ -105,25 +130,30 @@ func set_stance(new_stance: StanceState):
 	
 	var target_height: float
 	var camera_height: float
+	var tps_height: float
 	
 	match current_stance:
 		StanceState.STANDING:
 			target_height = standing_height
 			camera_height = 1.6
+			tps_height = 1.8
 			current_speed = RUN_SPEED if is_running else WALK_SPEED
 		StanceState.CROUCHING:
 			target_height = crouching_height
 			camera_height = 0.7
+			tps_height = 1.0
 			current_speed = CROUCH_SPEED
 		StanceState.PRONE:
 			target_height = prone_height
 			camera_height = 0.2
+			tps_height = 0.5
 			current_speed = PRONE_SPEED
 	
 	var shape = collision_shape.shape as CapsuleShape3D
 	var tween = create_tween()
 	tween.parallel().tween_property(shape, "height", target_height, 0.3)
 	tween.parallel().tween_property(camera_pivot, "position:y", camera_height, 0.3)
+	tween.parallel().tween_property(tps_camera, "position:y", tps_height, 0.3)
 
 func handle_movement(delta):
 	if not is_on_floor():
